@@ -3,9 +3,6 @@ import { OvlBaseElement } from "../OvlBaseElement"
 
 export class ShellComp extends OvlBaseElement {
   comp1Visible: boolean
-  constructor() {
-    super()
-  }
   async getUI() {
     let comp1
     if (this.comp1Visible) {
