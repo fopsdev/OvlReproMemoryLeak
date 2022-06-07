@@ -3,7 +3,7 @@ import { OvlBaseElement } from "../OvlBaseElement"
 
 export class ShellComp extends OvlBaseElement {
   comp1Visible: boolean
-  async getUI() {
+  getUI() {
     let comp1
     if (this.comp1Visible) {
       comp1 = html`<ovl-comp1></ovl-comp1>`

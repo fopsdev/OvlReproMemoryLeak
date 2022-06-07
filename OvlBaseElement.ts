@@ -1,12 +1,12 @@
 import { render, TemplateResult } from "lit-html"
 
 export class OvlBaseElement extends HTMLElement {
-  async getUI(): Promise<TemplateResult[] | TemplateResult | undefined> {
+  getUI(): TemplateResult | undefined {
     return undefined
   }
-  async doRender() {
+  doRender() {
     //each comp renders itself using lit-html
-    let res = await this.getUI()
+    let res = this.getUI()
     render(res, this)
   }
   connectedCallback() {
