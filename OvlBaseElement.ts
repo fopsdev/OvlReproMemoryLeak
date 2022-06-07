@@ -15,4 +15,8 @@ export class OvlBaseElement extends HTMLElement {
   connectedCallback() {
     this.doRender()
   }
+  disconnectedCallback() {
+    console.log("disconnect", this.tagName)
+    render(undefined, this)
+  }
 }
