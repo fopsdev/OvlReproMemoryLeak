@@ -1,15 +1,30 @@
 import { html } from "lit-html"
 import { OvlBaseElement } from "../OvlBaseElement"
+import { Comp1 } from "./comp1"
 
 export class ShellComp extends OvlBaseElement {
   comp1Visible: boolean
   getUI() {
     let comp1
-    if (this.comp1Visible) {
-      comp1 = html`<ovl-comp1></ovl-comp1>`
+    let root = document.getElementById("MyDiv")
+    if (root) {
+      if (!this.comp1Visible) {
+        root.removeChild(document.getElementById("MyComp1"))
+      }
+      return root
+    } else {
+      var newDiv = document.createElement("div")
+      newDiv.id = "MyDiv"
+      var newContent = document.createTextNode("Shell")
+      newDiv.appendChild(newContent)
+      if (this.comp1Visible) {
+        comp1 = new Comp1()
+        comp1.id = "MyComp1"
+        newDiv.appendChild(comp1)
+      }
+
+      return newDiv
     }
-    return html`<div>Shell</div>
-      ${comp1}`
   }
   connectedCallback() {
     //simulating a state change which triggers a doRender...

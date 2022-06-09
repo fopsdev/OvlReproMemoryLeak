@@ -1,13 +1,17 @@
 import { render, TemplateResult } from "lit-html"
 
 export class OvlBaseElement extends HTMLElement {
-  getUI(): TemplateResult | undefined {
+  getUI(): Element | undefined {
     return undefined
   }
   doRender() {
     //each comp renders itself using lit-html
     let res = this.getUI()
-    render(res, this)
+    if (res) {
+      this.appendChild(res)
+    } else {
+      this.removeChild(this.firstChild)
+    }
   }
   connectedCallback() {
     //initial render of the comp
@@ -15,6 +19,5 @@ export class OvlBaseElement extends HTMLElement {
   }
   disconnectedCallback() {
     console.log("disconnect", this.tagName)
-    render(undefined, this)
   }
 }

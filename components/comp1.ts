@@ -1,8 +1,10 @@
-import { html } from "lit-html"
 import { OvlBaseElement } from "../OvlBaseElement"
 
 export class Comp1 extends OvlBaseElement {
   getUI() {
-    return html`<h1>Comp1</h1>`
+    var newDiv = document.createElement("div")
+    var newContent = document.createTextNode("Hi from Comp1")
+    newDiv.appendChild(newContent) // füge den Textknoten zum neu erstellten div
+    return newDiv
   }
 }
