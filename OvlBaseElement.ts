@@ -5,7 +5,6 @@ export class OvlBaseElement extends HTMLElement {
     return undefined
   }
   doRender() {
-    //each comp renders itself using lit-html
     let res = this.getUI()
     render(this, res)
   }
