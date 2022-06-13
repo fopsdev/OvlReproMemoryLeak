@@ -8,8 +8,10 @@ export class ShellComp extends OvlBaseElement {
     if (this.comp1Visible) {
       comp1 = html`<ovl-comp1></ovl-comp1>`
     }
-    return html`<div>Shell</div>
-      ${comp1}`
+    return html`<div>
+      <div>Shell</div>
+      ${comp1}
+    </div>`
   }
   connectedCallback() {
     //simulating a state change which triggers a doRender...
