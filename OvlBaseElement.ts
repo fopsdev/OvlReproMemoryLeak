@@ -1,13 +1,13 @@
-import { render, TemplateResult } from "lit-html"
+import { render } from "uhtml"
 
 export class OvlBaseElement extends HTMLElement {
-  getUI(): TemplateResult | undefined {
+  getUI() {
     return undefined
   }
   doRender() {
     //each comp renders itself using lit-html
     let res = this.getUI()
-    render(res, this)
+    render(this, res)
   }
   connectedCallback() {
     //initial render of the comp

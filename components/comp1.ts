@@ -1,4 +1,4 @@
-import { html } from "lit-html"
+import { html } from "uhtml"
 import { OvlBaseElement } from "../OvlBaseElement"
 
 export class Comp1 extends OvlBaseElement {
