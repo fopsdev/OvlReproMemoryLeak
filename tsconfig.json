@@ -7,6 +7,6 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "outDir": ""
+    "outDir": "dist"
   }
 }
