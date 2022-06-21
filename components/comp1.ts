@@ -3,6 +3,13 @@ import { OvlBaseElement } from "../OvlBaseElement"
 
 export class Comp1 extends OvlBaseElement {
   getUI() {
-    return html`<h1>Comp1</h1>`
+    // also add a few handlers to make the problem more obvious in e.g. chrome memory profiler
+    return html`<h1
+      @click=${(e) => console.log("clicked")}
+      @mousedown=${(e) => console.log("mousedown")}
+      @mouseup=${(e) => console.log("mouseup")}
+    >
+      Comp1
+    </h1>`
   }
 }

@@ -3,6 +3,7 @@ import { OvlBaseElement } from "../OvlBaseElement"
 
 export class ShellComp extends OvlBaseElement {
   comp1Visible: boolean
+  comp1ShowDurationMs: number
   getUI() {
     let comp1
     if (this.comp1Visible) {
@@ -14,12 +15,21 @@ export class ShellComp extends OvlBaseElement {
     </div>`
   }
   connectedCallback() {
-    //simulating a state change which triggers a doRender...
-    this.comp1Visible = true
+    this.comp1ShowDurationMs = 7000
     setTimeout(() => {
-      this.comp1Visible = false
-      this.doRender()
-    }, 3000)
+      this.comp1Toggler()
+    }, this.comp1ShowDurationMs)
     super.connectedCallback()
+  }
+  comp1Toggler() {
+    this.comp1ShowDurationMs = this.comp1ShowDurationMs / 2
+    if (this.comp1ShowDurationMs < 1000) {
+      this.comp1ShowDurationMs = 1000
+    }
+    this.comp1Visible = !this.comp1Visible
+    this.doRender()
+    setTimeout(() => {
+      this.comp1Toggler()
+    }, this.comp1ShowDurationMs)
   }
 }
