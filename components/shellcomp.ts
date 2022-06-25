@@ -1,23 +1,33 @@
-import { html } from "lit-html"
+import { html, render } from "lit-html"
 import { OvlBaseElement } from "../OvlBaseElement"
 
 export class ShellComp extends OvlBaseElement {
-  comp1Visible: boolean
+  compVisible: boolean
+
   getUI() {
-    let comp1
-    if (this.comp1Visible) {
-      comp1 = html`<ovl-comp1></ovl-comp1>`
+    let comp
+    if (this.compVisible) {
+      comp = html`<ovl-comp1></ovl-comp1>`
     }
     return html`<div>
       <button
         @click=${(e) => {
-          this.comp1Visible = !this.comp1Visible
+          this.compVisible = !this.compVisible
           this.doRender()
         }}
       >
-        Toggle Comp1
+        Toggle Visible
       </button>
-      ${comp1}
+      <button
+        @click=${(e) => {
+          setTimeout(() => {
+            render(undefined, document.getElementById("app"))
+          }, 0)
+        }}
+      >
+        Cleanup Shell
+      </button>
+      ${comp}
     </div>`
   }
 }
